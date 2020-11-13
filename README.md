@@ -4,7 +4,7 @@ A quick overview of important XML queries using Python.
 
 ## Basic Python snippets for querying XML
 
-Here is a basic XML snippet:
+Here is a xml file called animals.xml for comparison:
 
 ```XML
 <Animals>
@@ -38,14 +38,8 @@ Here is a basic XML snippet:
 </Animals>
 ```
 
-#### query overall XML
+#### Read XML file
 ```Python
-SELECT
-	[nature].query('(/*/Mammal)') AS 'Mammal'
-FROM   
-        [nature].[living_creatures]
+import xml.etree.ElementTree as et
+tree = et.parse('animals.xml')
 ```
-
->|       Mammal	       |
->| ------------------- |
->| ``` <Mammal><Rabbit lifespan_yrs="2" sleep_time_hrs="8"><Description>Plant-eating mammal, with long ears, long hind legs, and a short tail</Description></Rabbit><Cow lifespan_yrs="18" sleep_time_hrs="4"><Description>Fully grown female animal of a domesticated breed of ox, kept to produce milk.</Description></Cow><Dog lifespan_yrs="10" sleep_time_hrs="12"><Description>Domesticated carnivorous mammal that has a long snout, an acute sense of smell, non-retractable claw</Description></Dog></Mammal>```|
